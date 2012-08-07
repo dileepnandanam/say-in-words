@@ -1,3 +1,4 @@
+import gtk
 class numbertostring:
 
 	def __init__(self):
@@ -145,7 +146,55 @@ class numbertostring:
 			i+=1
 		return wordform[1:]
 		
-		
+class gui:
 	
+	def convert(self,a,b):
+		
+		self.wtextbox.set_text(self.p.spel(self.ntextbox.get_text()))
+		return
+		
+	def __init__(self):
+		self.p=numbertostring()
+		
+		
+		
+		
+		
+		self.w=gtk.Window(gtk.WINDOW_TOPLEVEL)
+		
+		self.box=gtk.VBox(False,0)
+		self.wbox=gtk.VBox(False,0)
+		self.nbox=gtk.VBox(False,0)
+		self.bbox=gtk.VBox(False,0)
+		self.cb=gtk.Button("say")
+		self.ntextbox = gtk.Entry(max=0)
+		self.wtextbox = gtk.Entry(max=500)
+		self.nlabel=gtk.Label("number :")
+		self.wlabel=gtk.Label("in words :")
+		self. tv = gtk.TextView()
+		self.w.set_title("numberTOword")
+		self.cb.connect("clicked",self.convert,None)
+
+		self.wbox.pack_start(self.wlabel,False,False,0)
+		self.wbox.pack_start(self.wtextbox,False,False,0)
+		self.nbox.pack_start(self.nlabel,False,False,0)
+		self.nbox.pack_start(self.ntextbox,False,False,0)
+		self.bbox.pack_start(self.cb,False,False,0)
+		
+		
+		self.box.pack_start(self.nbox,False,False,0)
+		self.box.pack_start(self.bbox,False,False,0)
+		self.box.pack_start(self.wbox,False,False,0)
+		self.w.add(self.box)
+		self.w.show_all()
+	def rungui(self):
+		gtk.main()
+	
+	
+	
+
+
+g=gui()		
+g.rungui()	
 
 
